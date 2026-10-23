@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>For Rua 🌸 — A Living 3D Flower</title>
+  <meta name="description" content="A futuristic 3D holographic bouquet of lilies, crafted just for Rua.">
+  <link rel="stylesheet" href="style.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "./libs/three.module.js",
+      "three/addons/": "./libs/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Ambient Studio Backdrop -->
+  <div class="studio-ambient-bg"></div>
+
+  <!-- Main Wrapper with Futuristic 3D Reel Frame -->
+  <div id="app-wrapper" class="reel-mode">
+    <div id="canvas-container">
+      <!-- Three.js WebGL canvas injected here -->
+
+      <!-- Futuristic 3D Holographic Frame Accents -->
+      <div class="hologram-frame-decor" aria-hidden="true">
+        <span class="corner top-left"></span>
+        <span class="corner top-right"></span>
+        <span class="corner bottom-left"></span>
+        <span class="corner bottom-right"></span>
+        <div class="hologram-scanline"></div>
+      </div>
+
+      <!-- Top Clean Bar (Minimal & Romantic) -->
+      <header class="hologram-top-bar clean-top-bar">
+        <div class="frame-actions">
+          <button id="aspect-toggle-btn" class="futuristic-icon-btn" title="Toggle 3D Frame vs Full Widescreen">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M4 6h16v12H4zM2 4v16h20V4H2z"/>
+            </svg>
+            <span class="btn-label">Frame</span>
+          </button>
+
+          <button id="btn-snapshot" class="futuristic-icon-btn" title="Capture High-Res Picture">
+            <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor">
+              <path d="M12 15.2a3.2 3.2 0 100-6.4 3.2 3.2 0 000 6.4z"/>
+              <path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Center Greeting (revealed after opening) -->
+      <div id="gift-message-header" class="gift-message-header hidden">
+        <button id="btn-close-header" class="note-close-btn" title="Hide note" aria-label="Close message">✕</button>
+        <p id="gift-for-text" class="gift-for-badge" contenteditable="true" spellcheck="false" title="Click to customize name">for Rua</p>
+        <p id="gift-main-title" class="gift-message-title" contenteditable="true" spellcheck="false" title="Click to edit message">I picked these Aqua Teal Glaze Lilies just for you, Rua</p>
+      </div>
+
+      <!-- Romantic Starting Experience: Midnight Garden Edition -->
+      <div id="gift-intro-modal" class="gift-intro-modal">
+        <!-- Floating Glaze Lily Petals in the ambient background -->
+        <div class="glaze-lily-drift" aria-hidden="true">
+          <svg class="glaze-drift-defs" width="0" height="0" style="position:absolute;">
+            <defs>
+              <linearGradient id="glazePetalGrad1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#39D5E8" stop-opacity="0.5"/>
+                <stop offset="60%" stop-color="#F2F4FA" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#E86C9A" stop-opacity="0.25"/>
+              </linearGradient>
+              <linearGradient id="glazePetalGrad2" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#F2F4FA" stop-opacity="0.45"/>
+                <stop offset="50%" stop-color="#39D5E8" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="#E86C9A" stop-opacity="0.2"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <svg class="glaze-petal petal-1" viewBox="0 0 24 36"><path d="M12 0 C18 10 22 22 12 36 C2 22 6 10 12 0 Z" fill="url(#glazePetalGrad1)"/></svg>
+          <svg class="glaze-petal petal-2" viewBox="0 0 24 36"><path d="M12 0 C18 10 22 22 12 36 C2 22 6 10 12 0 Z" fill="url(#glazePetalGrad2)"/></svg>
+          <svg class="glaze-petal petal-3" viewBox="0 0 24 36"><path d="M12 0 C18 10 22 22 12 36 C2 22 6 10 12 0 Z" fill="url(#glazePetalGrad1)"/></svg>
+          <svg class="glaze-petal petal-4" viewBox="0 0 24 36"><path d="M12 0 C18 10 22 22 12 36 C2 22 6 10 12 0 Z" fill="url(#glazePetalGrad2)"/></svg>
+          <svg class="glaze-petal petal-5" viewBox="0 0 24 36"><path d="M12 0 C18 10 22 22 12 36 C2 22 6 10 12 0 Z" fill="url(#glazePetalGrad1)"/></svg>
+          <svg class="glaze-petal petal-6" viewBox="0 0 24 36"><path d="M12 0 C18 10 22 22 12 36 C2 22 6 10 12 0 Z" fill="url(#glazePetalGrad2)"/></svg>
+        </div>
+
+        <div class="intro-glass-card">
+          <!-- Moonlit Aura Glow -->
+          <div class="card-moonlit-aura" aria-hidden="true"></div>
+
+          <!-- Living Heart Centerpiece -->
+          <div class="intro-heart-centerpiece">
+            <div class="heart-ambient-glow" aria-hidden="true"></div>
+            <div class="heart-orbital-outer" aria-hidden="true">
+              <span class="orbital-mote mote-top"></span>
+              <span class="orbital-mote mote-bottom"></span>
+            </div>
+            <div class="heart-orbital-inner" aria-hidden="true">
+              <span class="orbital-mote mote-right"></span>
+              <span class="orbital-mote mote-left"></span>
+            </div>
+
+            <!-- Luminous Glass Heart SVG -->
+            <div class="glass-heart-wrapper">
+              <svg class="glass-heart-svg" viewBox="0 0 48 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="heartGradient" x1="6" y1="4" x2="42" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#39D5E8"/>
+                    <stop offset="50%" stop-color="#4F7CF8"/>
+                    <stop offset="100%" stop-color="#E86C9A"/>
+                  </linearGradient>
+                  <linearGradient id="heartHighlight" x1="12" y1="4" x2="20" y2="24" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.8"/>
+                    <stop offset="60%" stop-color="#39D5E8" stop-opacity="0.35"/>
+                    <stop offset="100%" stop-color="#39D5E8" stop-opacity="0"/>
+                  </linearGradient>
+                  <filter id="heartGlow" x="-20%" y="-20%" width="140%" height="140%">
+                    <feGaussianBlur stdDeviation="1.8" result="blur"/>
+                    <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+                  </filter>
+                </defs>
+                <!-- Core Heart Shape -->
+                <path class="heart-body" d="M24 41.5 C24 41.5 4.5 28 4.5 15 C4.5 7.5 10.5 2.5 17.5 2.5 C21.5 2.5 23.5 5 24 5.8 C24.5 5 26.5 2.5 30.5 2.5 C37.5 2.5 43.5 7.5 43.5 15 C43.5 28 24 41.5 24 41.5 Z" fill="url(#heartGradient)" filter="url(#heartGlow)"/>
+                <!-- Upper-Left Glass Specular Curved Highlight -->
+                <path class="heart-glass-sheen" d="M17.5 5 C12 5 7.5 9 7.5 15 C7.5 20.5 13 27 18.5 32 C17 26 15 19 15 14 C15 9.5 18 6.5 21 6 C19.8 5.3 18.7 5 17.5 5 Z" fill="url(#heartHighlight)"/>
+                <!-- Delicate Sparkle Stars on Upper Right -->
+                <circle cx="34" cy="11" r="1.3" fill="#FFFFFF" opacity="0.95"/>
+                <circle cx="37" cy="15" r="0.8" fill="#F2F4FA" opacity="0.75"/>
+              </svg>
+              <!-- Shimmer Sweep Line -->
+              <div class="heart-shimmer-sweep" aria-hidden="true"></div>
+            </div>
+          </div>
+
+          <!-- Content Hierarchy -->
+          <span class="intro-badge">A GIFT FOR RUA</span>
+          <h1 class="intro-title">For Rua</h1>
+          <p class="intro-desc">
+            Like a Glaze Lily waiting in tranquility for sweet melody, these flowers were grown just for you, Rua.
+          </p>
+
+          <!-- Upgraded CTA Button -->
+          <button id="btn-open-gift" class="btn-open-gift" aria-label="Unwrap Your Flowers for Rua">
+            <span class="btn-ambient-glow" aria-hidden="true"></span>
+            <span class="btn-sheen-effect" aria-hidden="true"></span>
+            <span class="btn-text">Unwrap Your Flowers</span>
+            <!-- Tasteful Stylized Floral SVG Icon -->
+            <svg class="btn-flower-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="3" fill="#FFF8FA"/>
+              <path d="M12 3 C13.5 6.5 13.5 6.5 17 8 C13.5 9.5 13.5 9.5 12 13 C10.5 9.5 10.5 9.5 7 8 C10.5 6.5 10.5 6.5 12 3 Z" fill="#FCE7F0"/>
+              <circle cx="12" cy="6" r="2.2" fill="#E86C9A" opacity="0.85"/>
+              <circle cx="17.5" cy="10" r="2.2" fill="#E86C9A" opacity="0.85"/>
+              <circle cx="15.5" cy="16.5" r="2.2" fill="#E86C9A" opacity="0.85"/>
+              <circle cx="8.5" cy="16.5" r="2.2" fill="#E86C9A" opacity="0.85"/>
+              <circle cx="6.5" cy="10" r="2.2" fill="#E86C9A" opacity="0.85"/>
+              <circle cx="12" cy="12" r="1.8" fill="#FFE2EC"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Burst particle effect container for the magical opening transition -->
+        <div id="intro-burst-container" class="intro-burst-container" aria-hidden="true"></div>
+      </div>
+
+      <!-- Bottom Interactive Drawer: Revealed upon blooming -->
+      <div id="color-choice-drawer" class="color-choice-drawer hidden">
+        <div class="drawer-glass-panel">
+          <!-- Mobile drag / tap handle to close -->
+          <div id="drawer-drag-handle" class="drawer-drag-handle" title="Tap to close panel">
+            <span class="handle-bar"></span>
+          </div>
+
+          <div class="drawer-header-row">
+            <div class="drawer-header">
+              <span class="drawer-sparkle">✨</span>
+              <span id="drawer-prompt-text" class="drawer-title">Rua's Favorite: Aqua Teal (Sky Blue) ✨</span>
+            </div>
+            <button id="btn-close-drawer" class="drawer-close-btn" title="Close panel to view full flowers" aria-label="Close card">
+              <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+              </svg>
+            </button>
+          </div>
+          <p id="drawer-sub-text" class="drawer-sub">Reminds me of Glaze Lilies, loved by Guizhong &amp; Zhongli</p>
+
+          <!-- Interactive Fun Fact Card for Selected Lily -->
+          <div class="fun-fact-container">
+            <div class="fun-fact-header-row">
+              <span id="fact-pill" class="fact-pill">🩵 Aqua Teal (Sky Blue)</span>
+              <span id="fact-symbolism" class="fact-symbolism">Devotion, Glaze Lily Grace &amp; Rua's Favorite</span>
+            </div>
+            <p id="fun-fact-text" class="fun-fact-description">
+              Aqua teal reminds me of Glaze Lilies, which were loved by Guizhong and Zhongli. In ancient lore, these mystical blossoms only open in tranquility to the sweet melody of music — symbolizing a cherished bond that transcends time.
+            </p>
+          </div>
+
+          <!-- Color Swatches with familiar terms & easy names -->
+          <div class="palette-swatches">
+            <button class="color-swatch active" data-color-name="Aqua Teal (Sky Blue)" data-hue-shift="-2.75" style="--swatch-color: #38bdf8" title="Aqua Teal (Sky Blue) — Rua's Favorite!"></button>
+            <button class="color-swatch" data-color-name="Sapphire (Deep Blue)" data-hue-shift="-2.25" style="--swatch-color: #2563eb" title="Sapphire (Deep Blue)"></button>
+            <button class="color-swatch" data-color-name="Emerald (Mint Green)" data-hue-shift="2.70" style="--swatch-color: #10b981" title="Emerald (Mint Green)"></button>
+            <button class="color-swatch" data-color-name="Golden (Sun Yellow)" data-hue-shift="1.15" style="--swatch-color: #eab308" title="Golden (Sun Yellow)"></button>
+            <button class="color-swatch" data-color-name="Sunset (Warm Peach)" data-hue-shift="0.75" style="--swatch-color: #f97316" title="Sunset (Warm Peach)"></button>
+            <button class="color-swatch" data-color-name="Crimson (Ruby Red)" data-hue-shift="0.28" style="--swatch-color: #ef4444" title="Crimson (Ruby Red)"></button>
+            <button class="color-swatch" data-color-name="Stargazer (Rose Pink)" data-hue-shift="0" style="--swatch-color: #ec4899" title="Stargazer (Rose Pink)"></button>
+            <button class="color-swatch" data-color-name="Orchid (Magenta Pink)" data-hue-shift="-0.65" style="--swatch-color: #d946ef" title="Orchid (Magenta Pink)"></button>
+            <button class="color-swatch" data-color-name="Royal (Lilac Purple)" data-hue-shift="-1.20" style="--swatch-color: #8b5cf6" title="Royal (Lilac Purple)"></button>
+            <label class="custom-color-label" title="Custom (Pick Any Color)">
+              <input type="color" id="custom-color-input" value="#38bdf8">
+              <span class="custom-color-icon">🎨</span>
+            </label>
+          </div>
+
+          <!-- Bottom Playback Controls (Free 3D rotation is automatic upon bloom!) -->
+          <div class="gift-action-bar">
+            <button id="btn-restart" class="action-btn" title="Replay Bloom">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+              </svg>
+              <span>Replay</span>
+            </button>
+
+            <button id="btn-play-pause" class="action-btn" title="Play / Pause">
+              <svg id="play-pause-svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+              </svg>
+              <span id="play-pause-text">Pause</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating Button to Re-open Drawer when minimized -->
+      <button id="btn-reopen-drawer" class="floating-drawer-toggle hidden" title="View Glaze Lily Lore & Colors">
+        <span class="floating-sparkle">🩵</span>
+        <span class="floating-label">Colors &amp; Lore</span>
+        <span class="floating-badge">✨</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Hidden elements for backward-compat logic -->
+  <input type="range" id="time-slider" style="display:none" min="0" max="100" value="0">
+  <select id="speed-select" style="display:none"><option value="1.0" selected>1x</option></select>
+  <select id="camera-mode-select" style="display:none"><option value="cinematic" selected>Cinematic</option><option value="orbit">Orbit</option></select>
+  <span id="stage-title" style="display:none"></span>
+  <span id="stage-formula" style="display:none"></span>
+  <span id="time-display" style="display:none"></span>
+  <div id="timeline-progress-fill" style="display:none"></div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
